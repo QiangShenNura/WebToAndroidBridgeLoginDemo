@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web to Android Bridge Login Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <header class="card-header">
+        <p class="eyebrow">Android WebView Bridge Demo</p>
+        <h1>Simulated Login Form</h1>
+        <p class="subtitle">Submit user credentials and pass a JSON string to the native Android layer.</p>
+      </header>
+
+      <form id="loginForm" novalidate>
+        <div class="grid">
+          <label class="field">
+            <span>Username</span>
+            <input id="username" name="username" type="text" placeholder="Enter username" autocomplete="username" />
+          </label>
+
+          <label class="field">
+            <span>Password</span>
+            <input id="password" name="password" type="password" placeholder="Enter password" autocomplete="current-password" />
+          </label>
+
+          <label class="field">
+            <span>userId</span>
+            <input id="userId" name="userId" type="text" placeholder="Enter user ID" />
+          </label>
+
+          <label class="field">
+            <span>age</span>
+            <input id="age" name="age" type="number" inputmode="numeric" placeholder="Enter age (integer)" />
+          </label>
+
+          <label class="field">
+            <span>heightInCm</span>
+            <input id="heightInCm" name="heightInCm" type="number" inputmode="numeric" placeholder="Enter height in cm" />
+          </label>
+
+          <label class="field">
+            <span>weightInKg</span>
+            <input id="weightInKg" name="weightInKg" type="number" inputmode="numeric" placeholder="Enter weight in kg" />
+          </label>
+
+          <label class="field">
+            <span>gender</span>
+            <select id="gender" name="gender">
+              <option value="">Select gender</option>
+              <option value="0">0 - Female</option>
+              <option value="1">1 - Male</option>
+            </select>
+          </label>
+        </div>
+
+        <p class="hint">
+          Numeric fields use <strong>-1</strong> when left empty or invalid.
+        </p>
+
+        <p id="message" class="message" aria-live="polite"></p>
+
+        <button id="loginButton" type="submit">Login</button>
+      </form>
+
+      <section class="debug">
+        <h2>Outgoing JSON String</h2>
+        <pre id="jsonPreview">No payload generated yet.</pre>
+      </section>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
