@@ -19,18 +19,6 @@ window.AndroidBridge.onJSLoginResult(jsonString)
 - Browser fallback message when `window.AndroidBridge` is not available.
 - Outgoing JSON preview area for demo visibility.
 
-## Kotlin Model Reference
-
-```kotlin
-data class QRCodeLoginResult(
-    val userId: String = "",
-    val age: Int = DEFAULT_VALUE,
-    val heightInCm: Int = DEFAULT_VALUE,
-    val weightInKg: Int = DEFAULT_VALUE,
-    val gender: Int = DEFAULT_VALUE, // 0 for female, 1 for male
-)
-```
-
 ## Payload Contract
 
 The page sends this JSON shape to Android:
@@ -61,38 +49,7 @@ python3 -m http.server 8080
 
 Then open `http://localhost:8080`.
 
-## Android WebView Integration Example
+## Configure Your MMA By Nuralogix Support
 
-### 1) Add JavaScript interface in Android
-
-```kotlin
-class AndroidBridge {
-    @JavascriptInterface
-    fun onJSLoginResult(resultJson: String) {
-        Log.d("AndroidBridge", "Received from JS: $resultJson")
-        // Parse JSON into QRCodeLoginResult if needed.
-    }
-}
-```
-
-### 2) Register the bridge in your WebView setup
-
-```kotlin
-webView.settings.javaScriptEnabled = true
-webView.addJavascriptInterface(AndroidBridge(), "AndroidBridge")
-webView.loadUrl("file:///android_asset/index.html")
-```
-
-## Security Notes
-
-- Only expose required `@JavascriptInterface` methods.
-- Avoid loading untrusted pages when JavaScript bridge is enabled.
-- Keep bridge APIs minimal and validate all incoming data on native side.
-- Enable WebView debugging only in debug builds.
-
-## Project Files
-
-- `index.html`: Demo page structure and form fields.
-- `style.css`: Responsive visual style.
-- `script.js`: Validation, JSON serialization, and bridge invocation.
-- `README.md`: Setup and integration documentation.
+### 1) Change MMA Flow to `qrCodeLogin`
+### 2) Setup QR Code Login URL with your website url
