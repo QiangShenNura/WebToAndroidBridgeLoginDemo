@@ -132,6 +132,15 @@ button {
   cursor: pointer;
 }
 
+#closeButton {
+  background: linear-gradient(120deg, #6b7280 0%, #4b5563 100%);
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+}
+
 button:hover {
   filter: brightness(1.05);
 }

@@ -55,6 +55,17 @@ function sendToAndroidBridge(jsonString) {
   showMessage("Login successful. AndroidBridge is not available in this browser environment.", "success");
 }
 
+function navigateBack() {
+  const bridge = window.AndroidBridge;
+
+  if (bridge && typeof bridge.onJSNavigateBack === "function") {
+    bridge.onJSNavigateBack();
+    return;
+  }
+
+  showMessage("AndroidBridge.onJSNavigateBack is not available in this browser environment.", "error");
+}
+
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -71,4 +82,8 @@ loginForm.addEventListener("submit", (event) => {
 
   previewEl.textContent = jsonString;
   sendToAndroidBridge(jsonString);
+});
+
+document.getElementById("closeButton").addEventListener("click", () => {
+  navigateBack();
 });
